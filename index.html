@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prospero's Magic & Modern Power</title>
+  <!-- === EMBEDDED CSS === -->
+  <style>
+    /* RESET */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* BASE */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header, footer {
+      background: #2a9d8f;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    /* NAV */
+    nav {
+      background: #264653;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    nav a {
+      color: white;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #1b3a4b;
+    }
+
+    /* ACCORDION CONTAINER */
+    .accordion {
+      width: 90%;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    .accordion-item {
+      background: white;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .accordion-header {
+      padding: 1rem;
+      cursor: pointer;
+      position: relative;
+      font-weight: bold;
+    }
+    .accordion-header::after {
+      content: '\25BC';
+      position: absolute;
+      right: 1rem;
+      transition: transform 0.2s;
+    }
+    .accordion-header.active::after {
+      transform: rotate(-180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1rem;
+    }
+    .accordion-content h3 {
+      margin-top: 1rem;
+      color: #2a9d8f;
+    }
+    .accordion-content p,
+    .accordion-content ul {
+      margin: 1rem 0;
+    }
+    .accordion-content ul {
+      list-style: disc inside;
+    }
+
+    /* FOOTER TEXT */
+    footer p {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Digital Exhibition: Prospero’s Magic vs Modern Power</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#intro" data-target="intro">Introduction</a></li>
+      <li><a href="#profiles" data-target="profiles">Character Profiles</a></li>
+      <li><a href="#summaries" data-target="summaries">Act &amp; Play Summaries</a></li>
+      <li><a href="#why-power" data-target="why-power">Why Does Power Still Matter Today?</a></li>
+    </ul>
+  </nav>
+
+  <div class="accordion">
+
+    <!-- Introduction -->
+    <div class="accordion-item" id="intro">
+      <div class="accordion-header">Introduction</div>
+      <div class="accordion-content">
+        <p>Welcome! This exhibition compares Prospero’s magical authority in Shakespeare’s <em>The Tempest</em> to modern-day forms of power—think media moguls, tech billionaires, and political leaders. Scroll through to explore character comparisons, scene summaries, and the enduring relevance of power.</p>
+      </div>
+    </div>
+
+    <!-- Character Profiles -->
+    <div class="accordion-item" id="profiles">
+      <div class="accordion-header">Character Profiles</div>
+      <div class="accordion-content">
+        <h3>1. Prospero vs. Tech Billionaire</h3>
+        <ul>
+          <li><strong>Prospero:</strong> Controls spirits & environment using his magic staff.</li>
+          <li><strong>Modern Parallel:</strong> Tech CEOs shaping global communication & behavior through platforms.</li>
+        </ul>
+        <h3>2. Ariel vs. Political Leader</h3>
+        <ul>
+          <li><strong>Ariel:</strong> An invisible agent carries out Prospero’s will.</li>
+          <li><strong>Modern Parallel:</strong> Political operatives or media advisors who steer public opinion behind the scenes.</li>
+        </ul>
+        <h3>3. Caliban vs. Influential Activist</h3>
+        <ul>
+          <li><strong>Caliban:</strong> Native islander marginalized and punished for resisting Prospero.</li>
+          <li><strong>Modern Parallel:</strong> Grassroots activists challenging powerful institutions but often silenced or ignored.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Scene Summaries -->
+    <div class="accordion-item" id="summaries">
+      <div class="accordion-header">Act &amp; Play Summaries</div>
+      <div class="accordion-content">
+        <h3>Act IV, Scene 1</h3>
+        <p>Prospero rewards Ferdinand and Miranda’s love with a masque, halts it to punish conspirators, and demonstrates his total control over his enemies.</p>
+        <h3>Act V, Scene 1</h3>
+        <p>Prospero forgives his foes, renounces magic, restores order, and reveals the lovers—ending with reconciliation and departure home.</p>
+        <h3>Full Play Overview</h3>
+        <p>The Tempest opens with a storm conjured by Prospero. Exiled Duke Prospero uses magic to test and ultimately forgive those who wronged him, arranging love, punishing plots, and seeking redemption before abandoning his powers.</p>
+      </div>
+    </div>
+
+    <!-- Why Power Matters -->
+    <div class="accordion-item" id="why-power">
+      <div class="accordion-header">Why Does Power Still Matter Today?</div>
+      <div class="accordion-content">
+        <p>Power shapes societies, whether through magical spells or algorithms and policymaking. Understanding its dynamics helps us recognize both its potential for healing and its capacity for abuse.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- === JAVASCRIPT FOR NAV + ACCORDION === -->
+  <script>
+    // Accordion toggle
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const open = document.querySelector('.accordion-header.active');
+        if (open && open !== header) {
+          open.classList.remove('active');
+          open.nextElementSibling.style.maxHeight = null;
+        }
+        header.classList.toggle('active');
+        const content = header.nextElementSibling;
+        if (header.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+
+    // Open first section on load
+    window.addEventListener('load', () => {
+      document.querySelector('.accordion-header').click();
+    });
+
+    // Nav links open corresponding accordion and scroll into view
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-target');
+        const header = document.querySelector(`#${targetId} .accordion-header`);
+        if (!header.classList.contains('active')) {
+          header.click();
+        }
+        header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>
