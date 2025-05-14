@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Prospero's Magic & Modern Power</title>
-  <!-- === EMBEDDED CSS === -->
   <style>
     * {
       box-sizing: border-box;
@@ -47,10 +46,21 @@
       background: #1b3a4b;
     }
 
-    .accordion {
+    .accordion, .character-card {
       width: 90%;
       max-width: 800px;
       margin: 2rem auto;
+    }
+
+    .accordion-item, .character-box {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .accordion-item {
@@ -59,10 +69,6 @@
       border-radius: 4px;
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.5s forwards;
     }
 
     .accordion-header {
@@ -95,29 +101,16 @@
       color: #2a9d8f;
     }
 
-    .accordion-content p,
     .accordion-content ul {
+      list-style: disc inside;
       margin: 1rem 0;
     }
 
-    .accordion-content ul {
-      list-style: disc inside;
-    }
-
-    footer p {
-      font-size: 0.9rem;
-    }
-
-    /* Character Card */
     .character-card {
-      width: 90%;
-      max-width: 800px;
-      margin: 2rem auto;
       background: white;
       padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-out forwards;
     }
 
     .character-card h2 {
@@ -136,7 +129,7 @@
       background: #f0f0f0;
       padding: 1rem;
       border-radius: 6px;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
     .character-box:hover {
@@ -149,24 +142,8 @@
       color: #264653;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    footer p {
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -185,27 +162,27 @@
     </ul>
   </nav>
 
-  <!-- CHARACTER DESCRIPTIONS CARD -->
-  <div class="character-card">
+  <!-- CHARACTER CARD -->
+  <div class="character-card fade-target">
     <h2>Main Characters Overview</h2>
     <div class="character-grid">
-      <div class="character-box">
+      <div class="character-box fade-target">
         <h3>Prospero</h3>
         <p>The exiled Duke of Milan who controls the island using magical powers. He seeks justice and reconciliation.</p>
       </div>
-      <div class="character-box">
+      <div class="character-box fade-target">
         <h3>Ariel</h3>
         <p>A spirit bound to serve Prospero, longing for freedom. Represents obedience and unseen influence.</p>
       </div>
-      <div class="character-box">
+      <div class="character-box fade-target">
         <h3>Caliban</h3>
         <p>Native to the island. Resents Prospero's control. Symbolizes colonization, resistance, and the natural world.</p>
       </div>
-      <div class="character-box">
+      <div class="character-box fade-target">
         <h3>Ferdinand</h3>
         <p>Son of King Alonso. Falls in love with Miranda. Represents innocence and renewal.</p>
       </div>
-      <div class="character-box">
+      <div class="character-box fade-target">
         <h3>Miranda</h3>
         <p>Prospero's daughter, raised on the island. Her love with Ferdinand symbolizes hope and peace.</p>
       </div>
@@ -213,17 +190,14 @@
   </div>
 
   <div class="accordion">
-
-    <!-- Introduction -->
-    <div class="accordion-item" id="intro">
+    <div class="accordion-item fade-target" id="intro">
       <div class="accordion-header">Introduction</div>
       <div class="accordion-content">
-        <p>Welcome! This exhibition compares Prospero’s magical authority in Shakespeare’s <em>The Tempest</em> to modern-day forms of power—think media moguls, tech billionaires, and political leaders. Scroll through to explore character comparisons, scene summaries, and the enduring relevance of power.</p>
+        <p>Welcome! This exhibition compares Prospero’s magical authority in Shakespeare’s <em>The Tempest</em> to modern-day forms of power—think media moguls, tech billionaires, and political leaders.</p>
       </div>
     </div>
 
-    <!-- Character Profiles -->
-    <div class="accordion-item" id="profiles">
+    <div class="accordion-item fade-target" id="profiles">
       <div class="accordion-header">Character Profiles</div>
       <div class="accordion-content">
         <h3>1. Prospero vs. Tech Billionaire</h3>
@@ -244,8 +218,7 @@
       </div>
     </div>
 
-    <!-- Scene Summaries -->
-    <div class="accordion-item" id="summaries">
+    <div class="accordion-item fade-target" id="summaries">
       <div class="accordion-header">Act &amp; Play Summaries</div>
       <div class="accordion-content">
         <h3>Act IV, Scene 1</h3>
@@ -253,23 +226,25 @@
         <h3>Act V, Scene 1</h3>
         <p>Prospero forgives his foes, renounces magic, restores order, and reveals the lovers—ending with reconciliation and departure home.</p>
         <h3>Full Play Overview</h3>
-        <p>The Tempest opens with a storm conjured by Prospero. Exiled Duke Prospero uses magic to test and ultimately forgive those who wronged him, arranging love, punishing plots, and seeking redemption before abandoning his powers.</p>
+        <p>Prospero uses magic to test and ultimately forgive those who wronged him, arranging love, punishing plots, and seeking redemption before abandoning his powers.</p>
       </div>
     </div>
 
-    <!-- Why Power Matters -->
-    <div class="accordion-item" id="why-power">
+    <div class="accordion-item fade-target" id="why-power">
       <div class="accordion-header">Why Does Power Still Matter Today?</div>
       <div class="accordion-content">
         <p>Power shapes societies, whether through magical spells or algorithms and policymaking. Understanding its dynamics helps us recognize both its potential for healing and its capacity for abuse.</p>
       </div>
     </div>
-
   </div>
 
-  <!-- === JAVASCRIPT FOR NAV + ACCORDION === -->
+  <footer>
+    <p>&copy; 2025 Digital Shakespeare Exhibition – All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
   <script>
-    // Accordion toggle
+    // Accordion functionality
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', () => {
         const open = document.querySelector('.accordion-header.active');
@@ -287,28 +262,36 @@
       });
     });
 
-    // Open first section on load
+    // Default open first accordion
     window.addEventListener('load', () => {
       document.querySelector('.accordion-header').click();
     });
 
-    // Nav links open corresponding accordion and scroll into view
+    // Scroll to section on nav click
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const targetId = link.getAttribute('data-target');
         const header = document.querySelector(`#${targetId} .accordion-header`);
-        if (!header.classList.contains('active')) {
-          header.click();
-        }
+        if (!header.classList.contains('active')) header.click();
         header.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
-  </script>
 
-  <footer>
-    <p>&copy; 2025 Digital Shakespeare Exhibition – All rights reserved.</p>
-  </footer>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target); // Only animate once
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-target').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
