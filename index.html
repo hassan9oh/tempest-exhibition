@@ -90,6 +90,28 @@
       list-style: disc inside;
     }
 
+    /* CARD STYLES */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .card {
+      background: #e9f5f3;
+      border-left: 5px solid #2a9d8f;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #264653;
+    }
+    .card p {
+      font-size: 0.95rem;
+    }
+
     /* FOOTER TEXT */
     footer p {
       font-size: 0.9rem;
@@ -108,6 +130,7 @@
       <li><a href="#profiles" data-target="profiles">Character Profiles</a></li>
       <li><a href="#summaries" data-target="summaries">Act &amp; Play Summaries</a></li>
       <li><a href="#why-power" data-target="why-power">Why Does Power Still Matter Today?</a></li>
+      <li><a href="#character-cards" data-target="character-cards">Character Cards</a></li>
     </ul>
   </nav>
 
@@ -164,7 +187,46 @@
       </div>
     </div>
 
+    <!-- Character Card Summary -->
+    <div class="accordion-item" id="character-cards">
+      <div class="accordion-header">Character Card Summary</div>
+      <div class="accordion-content">
+        <div class="card-container">
+
+          <div class="card">
+            <h3>Prospero</h3>
+            <p>Magical ruler who controls the island. Parallels today’s tech CEOs who shape digital spaces and public behavior.</p>
+          </div>
+
+          <div class="card">
+            <h3>Ariel</h3>
+            <p>A spirit who serves Prospero invisibly. Similar to media advisors or data algorithms that influence decisions behind the scenes.</p>
+          </div>
+
+          <div class="card">
+            <h3>Caliban</h3>
+            <p>The island’s original inhabitant, oppressed by Prospero. Represents modern grassroots activists silenced by larger forces.</p>
+          </div>
+
+          <div class="card">
+            <h3>Ferdinand & Miranda</h3>
+            <p>The young lovers. Their union symbolizes hope and harmony, often used in narratives to legitimize leadership or change.</p>
+          </div>
+
+          <div class="card">
+            <h3>Antonio & Sebastian</h3>
+            <p>Ambitious plotters. Reflects corrupt politicians or power-seekers who manipulate systems for personal gain.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
+
+  <footer>
+    <p>&copy; 2025 Tempest Digital Exhibition. All rights reserved.</p>
+  </footer>
 
   <!-- === JAVASCRIPT FOR NAV + ACCORDION === -->
   <script>
